@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>あの楽器 on Web</title>
     <meta name="description" content="あの楽器をWebブラウザで使おう">
@@ -80,6 +80,9 @@
             bottom: 0;
             position: absolute;
         }
+		.svg{
+			position: absolute; margin: 0; padding:0;
+		}
     </style>
 </head>
 
@@ -208,17 +211,17 @@
                 case 0:
                     //マル
                     $('#view').append(
-                        $('<div class="svg" style="position: absolute; margin: 0; padding:0 ; left:' +
+                        $('<div class="svg" style="left:' +
                             (e.pageX - randSize / 2) + 'px; top: ' +
                             (e.pageY - randSize / 2) + 'px; width: ' +
-                            randSize + 'px; height: ' + randSize + 'px; transform: rotate(' + randNum + 'deg);">')
+                            randSize + 'px; height: ' + randSize + 'px;">')
                         .append('<svg width="' + randSize + '" height="' + randSize + '" viewBox="0 0 ' + randSize + ' ' + randSize + '">' +
                             '<circle r="' + randSize / 2.2 + '" cx="' + randSize / 2 + '" cy="' + randSize / 2 + '" stroke="#86cecb" stroke-width="' + ObjSize + '" fill-opacity="0" ></circle></svg>'));
                     break;
                 case 1:
                     //シカク
                     $('#view').append(
-                        $('<div class="svg" style="position: absolute; margin: 0; padding:0 ; left:' +
+                        $('<div class="svg" style="left:' +
                             (e.pageX - randSize / 2) + 'px; top: ' +
                             (e.pageY - randSize / 2) + 'px; width: ' +
                             randSize + 'px; height: ' + randSize + 'px; transform: rotate(' + randNum + 'deg);">')
@@ -228,7 +231,7 @@
                 case 2:
                     //線
                     $('#view').append(
-                        $('<div class="svg" style="position: absolute; margin: 0; padding:0 ; left:' +
+                        $('<div class="svg" style="left:' +
                             (e.pageX - 4000 / 2) + 'px; top: ' +
                             (e.pageY - ObjSize / 2) + 'px; width: ' +
                             4000 + 'px; height: ' + ObjSize + 'px; transform: rotate(' + randNum + 'deg);">')
@@ -236,7 +239,7 @@
                             '<rect width="4000" height="' + ObjSize + '" x="0" y="0" stroke-width="0" fill-opacity="1" fill="#86cecb"></rect></svg>'));
                     break;
             }
-            $('.svg').fadeOut(1500);
+            $('.svg').fadeOut(1500, function() { $(this).remove();});
         });
     </script>
 </body>
